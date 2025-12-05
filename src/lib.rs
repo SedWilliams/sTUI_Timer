@@ -1,11 +1,14 @@
 use rand::prelude::*;
 use std::{io, time, thread};
+use chrono::Local;
 use crossterm::{event, event::Event, event::KeyCode, terminal};
 
+#[derive(Debug)]
 pub struct base_time {
     pub id: u32,
     pub time_spent: [i8;3],
-    pub date: [i16;3],
+    pub date: chrono::format::DelayedFormat<chrono::format::StrftimeItems<'static>>, //type from
+                                                                                     //chrono crate
 }
 
 fn generate_id() -> u32 {
@@ -33,16 +36,28 @@ pub fn timer() {
         }
 
         elapsed_seconds += 1;
+
+        //run secs_to_base_time function to convert elapsed_seconds into base_time struct
+
     }
+
+    let formatted_time: base_time = secs_to_base_time(elapsed_seconds);
     
-    println!("Total elapsed time: {} seconds", elapsed_seconds);
+    println!("Session info: {:?} seconds", &formatted_time);
     //println!("Debug: timer function end...");
-    
     
 }
 
 fn secs_to_base_time(seconds_from_timer: u64) -> base_time {
-    unimplemented!();
+    let hours: i8 = (seconds_from_timer / 3600) as i8;
+    let minutes: i8 = ((seconds_from_timer % 3600) / 60) as i8;
+    let seconds: i8 = (seconds_from_timer % 60) as i8;
+
+    base_time {
+        id: generate_id(),
+        time_spent: [hours, minutes, seconds],
+        date: Local::now().format("%Y-%m-%d"), 
+    }
 }
 
 #[cfg(test)]

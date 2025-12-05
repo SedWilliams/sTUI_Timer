@@ -1,6 +1,7 @@
 use rust_study_timer::timer;
 use crossterm::{event::{self, read, Event, KeyCode}, terminal};
-use std::io;
+use std::{io};
+use chrono::Local;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
 
@@ -9,8 +10,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("--------------------------");
     println!("Terminal Study Timer...");
     println!("--------------------------");
-    println!("\r");
+    println!("");
     println!("Would you like to start a study timer? (y/n)...");
+
+    //println!("{}", Local::now().format("%Y-%m-%d"));
 
     //match input to handle yes/no response for starting the timer
     loop {
