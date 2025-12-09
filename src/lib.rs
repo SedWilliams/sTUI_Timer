@@ -1,14 +1,12 @@
-use std::{io, time, thread};
-use std::fs::{self, OpenOptions, File};
-use std::path::Path;
+use std::time;
+use std::fs::{exists, OpenOptions, File};
+use std::io::Write;
 
 use rand::prelude::*;
 use chrono::Local;
 use crossterm::{event, event::Event, event::KeyCode, terminal};
-use serde::{Serialize, Deserialize};
-use serde_json::{from_str};
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, serde::Serialize, serde::Deserialize)]
 pub struct BaseTime {
     pub id: u32,
     pub time_spent: [i8;3],
@@ -22,11 +20,44 @@ fn generate_id() -> u32 {
     rng.random_range(1000..9999)
 }
 
-pub fn append_to_file() {
-    let cwd = std::env::current_dir().unwrap().display().to_string();
-    match fs::exists(format!("{cwd}/time_log.txt")) {
-        Ok(file) => println!("File opened successfully: {:?}", file),
-        Err(e) => println!("Failed to open file: {}", e),
+//abstract file existence check into its own function
+pub fn update_time_log(session_details: &BaseTime) {
+
+    let cwd = std::env::current_dir()
+        .unwrap()
+        .display()
+        .to_string();
+
+    match exists(format!("{cwd}/time_log.txt")) {
+        Ok(true) => {
+            println!("Time log file exists. Appending new entry...");
+            let file_path = format!("{cwd}/time_log.txt");
+            let mut file = OpenOptions::new()
+                .append(true)
+                .open(&file_path)
+                .expect("Failed to open time_log.txt for appending");
+
+            let json_entry = serde_json::to_string(&session_details)
+                .expect("Failed to serialize session details to JSON");
+
+            use std::io::Write;
+            writeln!(file, "{}", json_entry)
+                .expect("Failed to write session details to time_log.txt");
+        },
+        Ok(false) => {
+            println!("Time log file does not exist. Creating new file...");
+            let file_path = format!("{cwd}/time_log.txt");
+            let mut file = File::create(&file_path)
+                .expect("Failed to create time_log.txt");
+            let json_entry = serde_json::to_string(&session_details)
+                .expect("Failed to serialize session details to JSON");
+            writeln!(file, "{}", json_entry)
+                .expect("Failed to write session details to time_log.txt");
+
+        },
+        Err(e) => {
+            println!("Error checking file existence: {}", e);
+        },
     }
 
 }
@@ -57,6 +88,7 @@ pub fn timer() {
     }
 
     let formatted_time: BaseTime = secs_to_base_time(elapsed_seconds);
+    update_time_log(&formatted_time);
     
     //println!("Session info: {:?}", &formatted_time.date);
     //println!("Debug: timer function end...");

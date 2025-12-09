@@ -23,6 +23,9 @@ Note: Program uses system date/time. Please ensure your system date/time is curr
 * chrono crate for date/time Handling
 * serde/serde_json crates for serialization/deserialization (JSON in this project)
 * crossterm crate for terminal manipulation and event handling
+* test based development
+    * OOP is harder to write testable code in versus functional
+* Safe usage of VCS
 
 ## Problems encountered
 
