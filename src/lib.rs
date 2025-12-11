@@ -6,14 +6,8 @@ use rand::prelude::*;
 use chrono::Local;
 use crossterm::{event, event::Event, event::KeyCode, terminal};
 
-#[derive(Debug, serde::Serialize, serde::Deserialize)]
-pub struct BaseTime {
-    pub id: u32,
-    pub time_spent: [i8;3],
-    pub date: String,
-    //pub date: chrono::format::DelayedFormat<chrono::format::StrftimeItems<'static>>, //type from
-                                                                                     //chrono crate
-}
+mod types;
+use crate::types::time_log::TimeLog;
 
 fn generate_id() -> u32 {
     let mut rng = rand::rng();
@@ -21,7 +15,7 @@ fn generate_id() -> u32 {
 }
 
 //abstract file existence check into its own function
-pub fn update_time_log(session_details: &BaseTime) {
+pub fn update_time_log(session_details: &TimeLog) {
 
     let cwd = std::env::current_dir()
         .unwrap()
@@ -87,7 +81,7 @@ pub fn timer() {
 
     }
 
-    let formatted_time: BaseTime = secs_to_base_time(elapsed_seconds);
+    let formatted_time: TimeLog = secs_to_base_time(elapsed_seconds);
     update_time_log(&formatted_time);
     
     //println!("Session info: {:?}", &formatted_time.date);
@@ -95,12 +89,12 @@ pub fn timer() {
     
 }
 
-fn secs_to_base_time(seconds_from_timer: u64) -> BaseTime{
+fn secs_to_base_time(seconds_from_timer: u64) -> TimeLog {
     let hours: i8 = (seconds_from_timer / 3600) as i8;
     let minutes: i8 = ((seconds_from_timer % 3600) / 60) as i8;
     let seconds: i8 = (seconds_from_timer % 60) as i8;
 
-    BaseTime {
+    TimeLog {
         id: generate_id(),
         time_spent: [hours, minutes, seconds],
         date: Local::now().format("%Y-%m-%d").to_string(), 
@@ -115,13 +109,13 @@ mod tests {
     fn test_secs_to_base_time() {
         let time_in_secs: u64 = 3605; //1 hour, 0 minutes, 5 seconds
         
-        let expected_formatted_time: BaseTime = BaseTime {
+        let expected_formatted_time = TimeLog {
             id: 1234, //id is arbitrary for this test
             time_spent: [1, 0, 5],
             date: Local::now().format("%Y-%m-%d").to_string(), //date is arbitrary for this test
         };
 
-        let res: BaseTime = secs_to_base_time(time_in_secs);
+        let res: TimeLog = secs_to_base_time(time_in_secs);
         
         //given a fixed input time in seconds, the output time_spent should match
         //expected_formatted_time's time_spent, which represents the correct converstion done
