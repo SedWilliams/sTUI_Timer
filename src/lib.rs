@@ -7,7 +7,7 @@ use chrono::Local;
 use crossterm::{event, event::Event, event::KeyCode, terminal};
 
 mod types;
-use crate::types::time_log::TimeLog;
+use crate::types::TimeLog;
 
 fn generate_id() -> u32 {
     let mut rng = rand::rng();
