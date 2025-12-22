@@ -10,27 +10,24 @@ use crossterm::{event::{read, Event, KeyCode}, terminal};
 
 //blocking wait for yes/no input -> return owned string
 pub fn get_yes_no() -> String {
-    loop {
-        terminal::enable_raw_mode().expect("Failed to enable raw mode");
-
+    terminal::enable_raw_mode().expect("Failed to enable raw mode");
+    let result = loop {
         if let Event::Key(event) = read().expect("Failed to read event") {
             match event.code {
                 KeyCode::Char('y') | KeyCode::Char('Y') => {
-                    terminal::disable_raw_mode().expect("Failed to disable raw mode");
-                    return String::from("y");
+                    break String::from("y");
                 }
                 KeyCode::Char('n') | KeyCode::Char('N') => {
-                    terminal::disable_raw_mode().expect("Failed to disable raw mode");
-                    return String::from("n");
+                    break String::from("n");
                 }
                 _ => {
                     continue;
                 }
             }
         }
-
-        terminal::disable_raw_mode().expect("Failed to disable raw mode");
-    }
+    };
+    terminal::disable_raw_mode().expect("Failed to disable raw mode");
+    result
 }
 
 //non-blocking wait for termination keypress
@@ -47,8 +44,7 @@ pub fn program_welcome() {
     println!("--------------------------");
     println!("Terminal Study Timer...");
     println!("--------------------------");
-    println!("");
-    println!("Would you like to start a study timer? (y/n)...");
+        println!("Would you like to start a study timer? (y/n)...");
 }
 
 //exit msg, displays on program close

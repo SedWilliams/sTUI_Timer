@@ -84,6 +84,8 @@ pub fn timer() {
 
     }
 
+    terminal::disable_raw_mode().expect("Failed to disable raw mode");
+
     let formatted_time: TimeLog = secs_to_base_time(elapsed_seconds);
     update_time_log(&formatted_time);
     
