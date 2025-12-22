@@ -8,12 +8,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     terminal::SetTitle("Terminal Study Timer");
 
     //append_to_file();
+    
+    lib::io::program_welcome();
 
-    println!("--------------------------");
-    println!("Terminal Study Timer...");
-    println!("--------------------------");
-    println!("");
-    println!("Would you like to start a study timer? (y/n)...");
+    // println!("--------------------------");
+    // println!("Terminal Study Timer...");
+    // println!("--------------------------");
+    // println!("");
+    // println!("Would you like to start a study timer? (y/n)...");
 
     //println!("{}", Local::now().format("%Y-%m-%d"));
 
@@ -30,7 +32,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                     break;
                 }
                 KeyCode::Char('n') | KeyCode::Char('N') => {
-                    println!("Exiting the program. Goodbye!");
+                    // println!("Exiting the program. Goodbye!");
+                    lib::io::exit_message();
                     break;
                 }
                 _ => {
