@@ -1,21 +1,19 @@
-use crossterm::{event::{read, Event, KeyCode}, terminal};
-
-mod lib;
+mod logic;
 mod types;
 
 // program entry point
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     
-    lib::io::program_welcome();
+    logic::io::program_welcome();
     
     //parse a yes or no response, else display exit message
-    let response = lib::io::get_yes_no();
+    let response = logic::io::get_yes_no();
 
     if response == "y" {
         println!("Starting study timer...");
-        lib::timer();
+        logic::timer();
     } else {
-        lib::io::exit_message();
+        logic::io::exit_message();
     }
 
     Ok(())
