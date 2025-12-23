@@ -22,7 +22,9 @@ pub fn update_time_log(session_details: &TimeLog) {
 
     let time_log_txt_path = env::current_exe()
         .unwrap()
-        .join("/time_log.txt");
+        .parent()
+        .unwrap()
+        .join("time_log.txt");
 
     //Handles time_log.txt file appending and existence checking
     match exists(&time_log_txt_path) {
