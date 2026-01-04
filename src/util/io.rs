@@ -55,6 +55,7 @@ pub fn handle_yes_no(callback: fn()) {
     
     //handle results based on user input
     if result == "y" {
+        println!("");
         println!("\rStarting timer...\r");
         callback();
     } else {
