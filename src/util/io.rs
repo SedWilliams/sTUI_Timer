@@ -55,7 +55,7 @@ pub fn handle_yes_no(callback: fn()) {
     
     //handle results based on user input
     if result == "y" {
-        println!("Starting timer...");
+        println!("Starting timer...\r");
         callback();
     } else {
         exit_message();
@@ -125,7 +125,7 @@ pub fn update_time_log(session_details: &TimeLog) { //abstract file existence ch
     }
 
     //add silent, blocking, event read that waits for any keypress to continue
-    println!("\rPress any key to exit...");
+    println!("\rPress any key to exit...\r");
     let _ = read();
 
     terminal::disable_raw_mode().expect("Failed to disable raw mode");

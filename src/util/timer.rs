@@ -20,7 +20,7 @@ use crossterm::{
 
 pub fn timer() {
     //println!("Debug: timer funtion start...");
-    println!("\rType 'q' to stop the timer.");
+    println!("\rType 'q' to stop the timer.\r");
 
     let mut elapsed_seconds: u64 = 0;
 
