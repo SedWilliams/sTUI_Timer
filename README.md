@@ -13,8 +13,9 @@ At the core this is a simple terminal timer designed to time, and log, study ses
    * [Table of contents (DOCS folder)](DOCS/DOCS.md#table-of-contents)
    * [Usage: Quick Start](DOCS/DOCS.md#usage)
 5. [Architecture & Program Flow](DOCS/ARCHITECTURE.md)
-   * High-level overview of how the application runs.
-   * Flowcharts and logic description.
+   * [High Level Overview](DOCS/ARCHITECTURE.md#highlevel-overview)
+   * [Program Flow](DOCS/ARCHITECTURE.md#program-flow)
+   * [Data Flow Diagram](DOCS/ARCHITECTURE.md#data-flow-diagram)
 2. [API Documentation](DOCS/API.md)
     * Detailed breakdown of functions, structs, and modules.
 3. [Module Structure](DOCS/MODULES.md)
