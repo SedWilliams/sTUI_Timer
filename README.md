@@ -10,13 +10,15 @@ At the core this is a simple terminal timer designed to time, and log, study ses
    * [Problems Encountered](#problems-encountered)
    * [Future Improvements](#future-improvements)
 3. [Overview of DOCS folder](DOCS/DOCS.md)
-4. [Architecture & Program Flow](DOCS/ARCHITECTURE.md)
-    *   High-level overview of how the application runs.
-    *   Flowcharts and logic description.
+   * [Table of contents (DOCS folder)](DOCS/DOCS.md#table-of-contents)
+   * [Usage: Quick Start](DOCS/DOCS.md#usage)
+5. [Architecture & Program Flow](DOCS/ARCHITECTURE.md)
+   * High-level overview of how the application runs.
+   * Flowcharts and logic description.
 2. [API Documentation](DOCS/API.md)
-    *   Detailed breakdown of functions, structs, and modules.
+    * Detailed breakdown of functions, structs, and modules.
 3. [Module Structure](DOCS/MODULES.md)
-    *   Explanation of the file organization and source code layout.
+    * Explanation of the file organization and source code layout.
 
 ## Usage
 
