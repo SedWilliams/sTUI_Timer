@@ -6,7 +6,8 @@
   
 
 ## Current
-
+* Refactor MVP
+* Add test(s)
 
 ## Future
 
