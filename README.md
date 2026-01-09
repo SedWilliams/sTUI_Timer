@@ -9,6 +9,7 @@ This is a simple terminal timer designed to time and log study sessions.
    * [What I learned](#what-i-learned)
    * [Problems Encountered](#problems-encountered)
    * [Future Improvements](#future-improvements)
+   * [AI Usage in this project](#ai-usage)
 3. [Overview of DOCS Directory](DOCS/DOCS.md)
    * [Table of Contents (DOCS Directory)](DOCS/DOCS.md#table-of-contents)
 5. [Architecture & Program Flow](DOCS/ARCHITECTURE.md)
@@ -77,3 +78,16 @@ Future improvements list was moved to [./DOCS/TODO.md](DOCS/TODO.md)
 I use this tool personally, and I base my own study system off of Deep Work principles laid out in the work of Cal Newport.
 And adding a pause/resume feature would allow for fragmenting 'deep work' time which is not something I want to encourage
 for myself or for users of the tool. So this will always be a simple start, stop, and then end the session.
+
+## AI Usage  
+I used this project as an opportunity to get familiar with the AI tool Gemini-CLI.
+* I setup github actions with Gemini-CLI for automated triaging, code reviews, etc...
+* Used Gemini-CLI locally to revise/generate initial documentation.
+* Used Copilot Agent to fix a bug in early development.
+
+While the tools are good and I can definitely see how they would be useful especially in bigger projects,
+the cost to set them up I think outweighed the benefit in a small project like this.
+
+Although if I weren't doing this project for the sake of learning I think allowing the AI to do a lot more for me,
+and then setting up the necessary guardrails for checking AI written code could increase
+efficiency greatly (at the cost of learning).
