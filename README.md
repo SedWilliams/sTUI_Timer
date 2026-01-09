@@ -30,8 +30,15 @@ git clone https://github.com/SedWilliams/Terminal_Study_Log.git
 
 cd Terminal_Study_Log
 
-cargo run
+cargo run 
+
+//or...
+cargo build
+//find the 'rust_study_timer' executable
+./rust_study_timer
 ```
+
+Session information is stored next to the executable in a file called time\_log.txt
 
 Note: Program uses system date/time. Please ensure your system date/time is current.
 
