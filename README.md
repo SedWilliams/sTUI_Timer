@@ -5,7 +5,7 @@ This is a simple terminal timer designed to time and log study sessions.
 ## Table of Contents (Project wide, source of truth)
 
 1. [README.md](README.md#terminal-study-log)
-   * [Usage: Quick Start](#usagequick-start)
+   * [Usage: Quick Start](#usage-quick-start)
    * [What I learned](#what-i-learned)
    * [Problems Encountered](#problems-encountered)
    * [Future Improvements](#future-improvements)
