@@ -11,7 +11,6 @@ This is a simple terminal timer designed to time and log study sessions.
    * [Future Improvements](#future-improvements)
 3. [Overview of DOCS Directory](DOCS/DOCS.md)
    * [Table of Contents (DOCS Directory)](DOCS/DOCS.md#table-of-contents)
-   * [Usage: Quick Start](DOCS/DOCS.md#usage)
 5. [Architecture & Program Flow](DOCS/ARCHITECTURE.md)
    * [High-Level Program Overview](DOCS/ARCHITECTURE.md#highlevel-overview)
    * [Program Flow](DOCS/ARCHITECTURE.md#program-flow)
