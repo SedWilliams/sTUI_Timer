@@ -80,7 +80,7 @@ And adding a pause/resume feature would allow for fragmenting 'deep work' time w
 for myself or for users of the tool. So this will always be a simple start, stop, and then end the session.
 
 ## AI Usage  
-I used this project as an opportunity to get familiar with the AI tool Gemini-CLI.
+I used this project as an opportunity to get familiar with some AI tools.
 * I setup github actions with Gemini-CLI for automated triaging, code reviews, etc...
 * Used Gemini-CLI locally to revise/generate initial documentation.
 * Used Copilot Agent to fix a bug in early development.
