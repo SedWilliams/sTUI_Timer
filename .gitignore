@@ -7,3 +7,6 @@ trash.txt
 time_log.txt
 **/time_log.txt
 
+
+.gemini/
+gha-creds-*.json
