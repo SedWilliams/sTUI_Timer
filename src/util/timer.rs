@@ -1,5 +1,8 @@
 /*******************************************
  * Timer logic
+ *      TODO...
+ *      * refactor into struct with impl
+ *      * abstract spinner
  *******************************************/
 
 use std::{time, error::Error};

@@ -1,9 +1,17 @@
+/*****************************************************
+ * Program IO functions
+ *****************************************************/
 use std::env;
 use std::fs::{exists, OpenOptions, File};
 use std::io::{self, Write};
 use std::error::Error;
 
-use super::types::TimeLog;
+use super::types::{
+    TimeLog,
+    TimerCallback,
+    StringResult,
+    UnitResult
+};
 
 use crossterm::{
     event::{
@@ -12,12 +20,8 @@ use crossterm::{
     style::Stylize,
     terminal::*,
     cursor::*,
-    execute,
+    execute
 };
-
-/*****************************************************
- * Program IO functions
- *****************************************************/
 
 /*****************************************************
  * INPUT (handling) FUNCTIONS
@@ -31,7 +35,7 @@ use crossterm::{
 //
 //if yes -> callback()
 //if no -> terminate prgm
-pub fn await_yes_no() -> Result<String, Box<dyn Error>> {
+pub fn await_yes_no() -> StringResult {
 
     //wait for yes/no keypress and store result in 'result': String
     let result: String = loop {
@@ -55,7 +59,7 @@ pub fn await_yes_no() -> Result<String, Box<dyn Error>> {
     Ok(result)
 }
 
-pub fn handle_yes_no(result: String, callback:fn()->Result<(),Box<dyn Error>>) -> Result<(), Box<dyn Error>> {
+pub fn handle_yes_no(result: String, callback: TimerCallback) -> UnitResult {
     if result == "y" {
         println!("");
         println!("\rStarting timer...\r");
@@ -85,7 +89,7 @@ pub fn exit_message() {
 }
 
 //sets up terminal for program use
-pub fn set_terminal() -> Result<(), Box<dyn Error>> {
+pub fn set_terminal() -> UnitResult {
 
     execute!(
         io::stdout(),
@@ -95,17 +99,17 @@ pub fn set_terminal() -> Result<(), Box<dyn Error>> {
         //SetBackgroundColor(Color::DarkGrey),
         //SetForegroundColor(Color::Blue),
         MoveTo(0, 0),
-    )?;
+    ).expect("Please run 'cargo fetch'");
     
     welcome_message();
 
-    enable_raw_mode().expect("Failed to enable raw mode");
+    enable_raw_mode().expect("Please run 'cargo fetch'");
 
     Ok(())
 }
 
 //clears terminal and resets to normal screen
-pub fn clear_terminal() -> Result<(), Box<dyn Error>> {
+pub fn clear_terminal() -> UnitResult {
 
     execute!(
         io::stdout(),
