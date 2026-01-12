@@ -31,18 +31,18 @@ use crossterm::{
 //
 //if yes -> callback()
 //if no -> terminate prgm
+pub fn await_yes_no() -> Result<String, Box<dyn Error>> {
 
-pub fn handle_yes_no(callback: fn()) {
-
-    //wait for yes/no keypress
-    let result = loop {
-        if let Event::Key(event) = read().expect("Failed to read event") {
-            match event.code {
+    //wait for yes/no keypress and store result in 'result': String
+    let result: String = loop {
+        if let Event::Key(key) = read()? {
+            match key.code {
                 KeyCode::Char('y') | KeyCode::Char('Y') => {
-                    break String::from("y");
+                    //break String::from("y");
+                    break "y".into();
                 }
                 KeyCode::Char('n') | KeyCode::Char('N') => {
-                    break String::from("n");
+                    break "n".into();
                 }
                 _ => {
                     continue;
@@ -51,15 +51,20 @@ pub fn handle_yes_no(callback: fn()) {
         }
     };
     
-    //handle results based on user input
+    //pass ownership of result String back to caller
+    Ok(result)
+}
+
+pub fn handle_yes_no(result: String, callback: fn()) -> Result<(), Box<dyn Error>> {
     if result == "y" {
         println!("");
         println!("\rStarting timer...\r");
         callback();
     } else {
         exit_message();
-        clear_terminal().expect("Failed to deconstruct crossterm terminal");
+        clear_terminal()?;
     }
+    Ok(())
 }
 
 /*****************************************************
