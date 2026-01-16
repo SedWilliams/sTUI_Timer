@@ -11,7 +11,7 @@
   * Write passing tests for....
     * await_yes_no()
     * handle_yes_no()
-  * Write failing tests for options_on_startup()
+  * Write failing tests for options_on_startup
   * Develop options_on_startup()
   
 
