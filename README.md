@@ -1,4 +1,4 @@
-# STUI Timer (Standard TUI Timer)
+# sTUI Timer (Standard TUI Timer)
 
 This is a simple timer designed to time and log study sessions, built in Rust as a command-line interface (CLI) tool.
 
