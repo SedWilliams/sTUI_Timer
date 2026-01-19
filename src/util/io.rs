@@ -75,10 +75,10 @@ pub fn blocking_await_keypress() {
 
 //welcome message, displays on program start
 pub fn welcome_message() {
-    println!("--------------------");
-    println!("|   {}    |", " STUI Timer".blue().bold());
-    println!("--------------------");
-    println!("Press 's' to start the timer, 'v' to view logs, or 'q' to quit: ");
+    println!("--------------------\r");
+    println!("|   {}    |\r", " STUI Timer".blue().bold());
+    println!("--------------------\r");
+    println!("Press 's' to start the timer, 'v' to view logs, or 'q' to quit: \r");
 }
 
 //exit msg, displays on program close
@@ -139,7 +139,7 @@ pub fn update_time_log(session_details: &TimeLog) {
     //Handles time_log.txt file appending and existence checking
     match exists(&time_log_txt_path) {
         Ok(true) => {
-            println!("\rTime log file exists. Appending new entry...");
+            println!("\rTime log file exists. Appending new entry...\r");
             let file = OpenOptions::new()
                 .append(true)
                 .open(&time_log_txt_path)
@@ -158,7 +158,7 @@ pub fn update_time_log(session_details: &TimeLog) {
         }
 
         Ok(false) => {
-            println!("\rTime log file does not exist. Creating new file...");
+            println!("\rTime log file does not exist. Creating new file...\r");
 
             let file = File::create(&time_log_txt_path).unwrap_or_else(|error| {
                 clear_terminal();

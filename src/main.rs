@@ -6,6 +6,7 @@ use stui_timer::util::{self, io, types};
 // program entry point
 fn main() -> types::UnitResult {
     //display welcome message and set terminal
+    //      error handling done in function def
     io::set_terminal();
 
     let mut terminal_event_reader = types::TerminalEventReader::new();
@@ -23,7 +24,8 @@ fn main() -> types::UnitResult {
     });
 
     util::io::blocking_await_keypress();
-
+    
+    //error handling done in function def
     util::io::clear_terminal();
 
     Ok(())
