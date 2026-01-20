@@ -5,7 +5,7 @@ use std::env;
 use std::fs::{File, OpenOptions, exists};
 use std::io::{self, Write};
 
-use super::types::{EventReader, StringResult, TimeLog, TimerCallback, UnitResult};
+use crate::util::types::{EventReader, StringResult, TimeLog, TimerCallback, UnitResult};
 
 use crossterm::{
     cursor::*,
