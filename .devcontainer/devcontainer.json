@@ -5,6 +5,7 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/rust:2-1-trixie",
 	"features": {
+		//research the dot-config feature, and why it was auto added but ended up breaking the codespace
 		"ghcr.io/devcontainers/features/node:1": {},
 		"ghcr.io/devcontainer-config/features/dot-config:3": {}
 	},
