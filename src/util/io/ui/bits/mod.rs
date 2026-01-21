@@ -52,14 +52,11 @@ impl Widget for &App {
                 ratatui::layout::Constraint::Percentage(50),
             ])
             .spacing(0)
+            .margin(0)
             .split(area);
 
-        let left_header = Paragraph::new("STUI Timer").red().centered().bold();
-        let left_text = Paragraph::new("Press q to quit")
-            .white()
-            .centered()
-            .not_bold();
-
+        let left_header = Line::from("STUI Timer").red().centered().bold();
+        let left_text = Line::from("Press q to quit").white().centered().not_bold();
         let paragraphs = vec![
             "This is the first paragraph of text.".into(),
             "Here's the second, which will appear on a new line.".into(),
@@ -69,12 +66,21 @@ impl Widget for &App {
                 " in the third line!".into(),
             ]),
         ];
+        let left_comps: Vec<Line<'_>> = vec![left_header, left_text];
+        let block = Block::bordered()
+            .borders(!ratatui::widgets::Borders::RIGHT)
+            .border_style(Style::new().blue());
+        let block2 = Block::bordered()
+            .border_style(Style::new().blue().bold())
+            .add_modifier(Modifier::BOLD);
 
-        let block = Block::bordered().border_style(Style::new().blue().bold());
-
-        let left = Paragraph::new(paragraphs)
+        Paragraph::new(paragraphs)
             .block(block)
             .render(layout[0], buf);
+
+        Paragraph::new(left_comps)
+            .block(block2)
+            .render(layout[1], buf);
     }
 }
 
