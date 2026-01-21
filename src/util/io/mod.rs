@@ -1,14 +1,11 @@
 /*****************************************************
  * Program IO functions
  *****************************************************/
-
-pub mod event;
-
-use std::io::{self};
-
 use crate::util::types::{TimerCallback, UnitResult};
+pub mod event;
+pub mod ui;
 
-use crossterm::{execute, style::Stylize, terminal::*};
+use crossterm::style::Stylize;
 
 /*****************************************************
  * INPUT (handling) FUNCTIONS
@@ -35,7 +32,7 @@ pub fn handle_startup_choice(result: String, callback: TimerCallback) -> UnitRes
     Ok(())
 }
 
-pub use event::blocking_await_keypress;
+//pub use event::blocking_await_keypress;
 
 /*****************************************************
  * OUTPUT FUNCTIONS
@@ -55,7 +52,7 @@ pub fn exit_message() {
 }
 
 //sets up terminal for program use
-pub fn set_terminal() -> ratatui::Terminal<ratatui::backend::CrosstermBackend<io::Stdout>> {
+pub fn set_terminal() {
     /*
     execute!(
         io::stdout(),
@@ -74,15 +71,14 @@ pub fn set_terminal() -> ratatui::Terminal<ratatui::backend::CrosstermBackend<io
     });
     */
 
-    let term_instance = ratatui::init();
+    ratatui::init();
 
     welcome_message();
-
-    term_instance
 }
 
 //clears terminal and resets to normal screen
 pub fn clear_terminal() {
+    /*
     execute!(io::stdout(), LeaveAlternateScreen).unwrap_or_else(|error| {
         panic!("\n\rCrossterm error while clearing terminal: {}. Please restart terminal and run 'cargo fetch' to install Crossterm.", error);
     });
@@ -90,6 +86,9 @@ pub fn clear_terminal() {
     disable_raw_mode().unwrap_or_else(|error| {
         panic!("\n\rCrossterm error while disabling raw mode: {}. Please restart terminal and run 'cargo fetch' to install Crossterm.", error);
     });
+    */
+
+    ratatui::restore();
 }
 
 //static spinner animation

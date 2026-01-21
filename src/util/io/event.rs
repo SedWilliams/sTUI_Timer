@@ -32,6 +32,8 @@ pub fn await_startup_choice<R: EventReader>(reader: &mut R) -> StringResult {
 //returns the key event encountered (wrapped as `Event::Key`) so callers can
 //      optionally inspect it.
 pub fn blocking_await_keypress<R: EventReader>(reader: &mut R) -> EventResult {
+    println!("\rPress any key to exit...\r");
+
     loop {
         match reader.read_event()? {
             Event::Key(key_event) if key_event.kind == KeyEventKind::Press => {
