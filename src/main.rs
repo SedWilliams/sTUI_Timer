@@ -27,8 +27,11 @@ fn main() -> types::UnitResult {
     });
 
     //function that blocks thread from terminating on program end before user presses a key
-    util::io::blocking_await_keypress();
-    
+    util::io::event::blocking_await_keypress(&mut terminal_event_reader).unwrap_or_else(|error| {
+        io::clear_terminal();
+        panic!("\n\rError while awaiting exit keypress: {}.", error);
+    });
+
     //error handling done in function def
     util::io::clear_terminal();
 
