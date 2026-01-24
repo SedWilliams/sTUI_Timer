@@ -12,3 +12,6 @@ time_log.txt
 gha-creds-*.json
 
 **/cli.rs
+
+snapshots
+**/snapshots/
