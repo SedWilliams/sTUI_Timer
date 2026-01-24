@@ -29,7 +29,7 @@ fn make_keypress_event(c: char) -> Event {
 }
 
 #[cfg(test)]
-mod io {
+mod event {
     use super::*;
 
     #[test]
