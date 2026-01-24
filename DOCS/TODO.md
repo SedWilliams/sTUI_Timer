@@ -18,9 +18,10 @@
     * handle startup options
       * ~~Handle start and quit~~
       * handle 'v' (visualizing past sessions)
+* Update docs post ratatui integration and refactoring etc...
 
 ## Future
-* Functionality to visualize and format past study sessions from within the program.
+* Functionality to visualize and format past study sessions from within the program. \(this is a part of the options_on_startup feature\)
 * Official Builds for UNIX and Windows
 * Functionality to allow for adding past study sessions, or sessions tracked elsewhere.
 * Option to set custom study session length at runtime, and then implement sound cues for session end.

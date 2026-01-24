@@ -12,6 +12,7 @@ This is a simple timer designed to time and log study sessions, built in Rust as
    * [AI Usage in this project](#ai-usage)
 3. [Overview of DOCS Directory](DOCS/DOCS.md)
    * [Table of Contents (DOCS Directory)](DOCS/DOCS.md#table-of-contents)
+   * [Docs need update!](DOCS/DOCS.md)
 5. [Architecture & Program Flow](DOCS/ARCHITECTURE.md)
    * [High-Level Program Overview](DOCS/ARCHITECTURE.md#highlevel-overview)
    * [Program Flow](DOCS/ARCHITECTURE.md#program-flow)
