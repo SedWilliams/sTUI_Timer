@@ -11,4 +11,6 @@ fn ratatui_ui_test() {
             frame.render_widget(&app, frame.area());
         })
         .unwrap();
+
+    assert_snapshot!(terminal.backend());
 }
