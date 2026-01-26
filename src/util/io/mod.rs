@@ -72,7 +72,7 @@ pub fn set_terminal() {
     });
     */
 
-    ratatui::run(|terminal| App::default().run(terminal)).unwrap();
+    ratatui::run(|terminal| App::init().run(terminal)).unwrap();
     //welcome_message();
 }
 
