@@ -10,6 +10,8 @@
 * Feature: options_on_startup
     * ~~write failng test for UI~~
     * develop UI
+      * Plan state management between Timer (Widget) and App
+        * State only persists in main App so use stateful widget for Timer
     * ensure test passes
     * push
   * Develop options_on_startup()
