@@ -15,3 +15,5 @@ gha-creds-*.json
 
 snapshots
 **/snapshots/
+
+**/grave.rs

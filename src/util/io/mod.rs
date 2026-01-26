@@ -2,7 +2,7 @@
  * Program IO functions
  *****************************************************/
 use crate::util::types::{TimerCallback, UnitResult};
-use ui::bits::App;
+use ui::app::App;
 pub mod event;
 pub mod ui;
 
@@ -72,8 +72,8 @@ pub fn set_terminal() {
     });
     */
 
-    ratatui::run(|terminal| App::default().run(terminal)).unwrap();
-    welcome_message();
+    ratatui::run(|terminal| App::init().run(terminal)).unwrap();
+    //welcome_message();
 }
 
 //clears terminal and resets to normal screen
