@@ -1,7 +1,5 @@
 use std::time;
 
-use crossterm::event::{self, Event, KeyCode};
-use ratatui::prelude::*;
 use ratatui::widgets::Paragraph;
 use ratatui::widgets::Widget;
 

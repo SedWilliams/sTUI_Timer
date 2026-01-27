@@ -2,13 +2,13 @@
  * EventReader Types
  *********************************/
 
-use crossterm::event;
+use crossterm::event::{self, Event};
 
-use super::EventResult;
+use super::{EventResult, KeyEventResult};
 
 pub trait EventReader {
-    fn read_event(&mut self) -> EventResult;
-    fn poll_event(&mut self) -> EventResult;
+    fn read_event(&self) -> EventResult;
+    fn poll_event(&self) -> KeyEventResult;
 }
 
 pub struct TerminalEventReader;
@@ -24,11 +24,11 @@ impl EventReader for TerminalEventReader {
         Ok(crossterm::event::read()?)
     }
 
-    fn poll_event(&self) -> eventresult {
+    fn poll_event(&self) -> KeyEventResult {
         loop {
-            if poll(Duration::from_millis(1000))? {
-                if let event::key(key) = read()? {
-                    return Ok(event::key());
+            if crossterm::event::poll(std::time::Duration::from_millis(1000))? {
+                if let Event::Key(key) = event::read()? {
+                    return Ok(key);
                 }
             }
         }

@@ -3,8 +3,8 @@ use ratatui::widgets::{Block, Widget};
 use ratatui::{self, DefaultTerminal, Frame, layout::Constraint};
 use tui_big_text::{BigText, PixelSize};
 
+use crate::util::io::event::await_choice;
 use crate::util::io::ui::components::timer::Timer;
-use crate::util::io::{await_startup_choice, poll_event};
 use crate::util::types::TerminalEventReader;
 
 pub struct App {
@@ -80,9 +80,9 @@ impl App {
     //called to take care of the event handling
     //      we will implement this with crossterm
     pub fn handle_events(&mut self) -> std::io::Result<()> {
-        let mut reader = TerminalEventReader::new();
+        let reader = TerminalEventReader::new();
 
-        let result = poll_event(reader)?;
+        let result = await_choice(&reader).unwrap();
 
         if &result == "q" {
             self.exit = true;
