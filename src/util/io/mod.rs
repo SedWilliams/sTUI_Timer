@@ -12,7 +12,7 @@ use crossterm::style::Stylize;
  * INPUT (handling) FUNCTIONS
  *****************************************************/
 
-pub use event::await_startup_choice;
+pub use event::await_choice;
 
 //handle yes_no()
 //
